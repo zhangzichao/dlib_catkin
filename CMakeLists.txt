@@ -12,7 +12,10 @@ ExternalProject_Add(dlib_src
   GIT_REPOSITORY git@github.com:dorian3d/DLib.git
   GIT_TAG 70089a38056e8aebd5a2ebacbcb67d3751433f32
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CATKIN_DEVEL_PREFIX}
+  BUILD_COMMAND ${CMAKE_COMMAND} --build ./ --target install
+  INSTALL_COMMAND ""
 )
+ExternalProject_CatkinInstall(dlib_src)
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
 add_dependencies(${PROJECT_NAME} dlib_src)
